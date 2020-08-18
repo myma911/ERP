@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.haoyongsys</groupId>
+		<artifactId>erp</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>erp-common-util</artifactId>
+
+
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.haoyongsys</groupId>
+			<artifactId>erp-common-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
+		<!-- 引入redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+
+
+		<!-- 文件上传 -->
+		<dependency>
+			<groupId>cn.aaron911</groupId>
+			<artifactId>aaron911-file-spring</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
+		<!-- aop 实现切面同步锁 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<!-- Redisson 实现分布式锁 -->
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+
+
+		<!-- 集成接口流量控制 -->
+		<dependency>
+			<groupId>cn.aaron911</groupId>
+			<artifactId>aaron911-buron-spring-boot-starter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
+
+		<!--执行 SQL 分析打印 -->
+		<dependency>
+			<groupId>p6spy</groupId>
+			<artifactId>p6spy</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+
+
+		<!-- Spring Boot 邮件依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+
+	</dependencies>
+</project>

@@ -1,0 +1,115 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.3.193:5432/hxzncrm01?charSet=utf-8
+    username: upsys
+    password: pg.upeach.com_ok
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    initialization-mode: always
+    continue-on-error: true
+    hikari:
+      minimum-idle: 5
+      connection-test-query: SELECT 1 
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: SpringBootDemoHikariCP
+      max-lifetime: 60000
+      connection-timeout: 30000
+      
+      
+  elasticsearch: #springboot 默认配置 localhost:9200
+    rest:
+      uris: ["192.168.3.193:9200"]    
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.3.193:9300
+      
+    mongodb:
+      host: 192.168.3.193
+      database: share   
+      
+  main:
+    allow-bean-definition-overriding: true #允许覆盖注册
+    
+    
+  redis:
+    host: 192.168.3.193
+    port: 6379 
+  cache: 
+    type: redis #缓存的技术类型，可选 generic,ehcache,hazelcast,infinispan,jcache,redis,guava,simple,none
+    cache-names: SharedinfoText #应用程序启动创建缓存的名称，必须将所有注释为@Cacheable缓存name（或value）罗列在这里，否者：Cannot find cache named 'xxx' for Builder[xx] caches=[sysItem] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+
+
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 523944820
+    password: murmripphhzjbhej
+    protocol: smtp
+    test-connection: true
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.ssl.enable: true
+      mail.display.sendmail: spring-boot-demo
+
+jwt:
+   config:
+      key: haoyongsys
+      ttl: 360000  
+      
+      
+      
+      
+      
+redis:
+    host: 192.168.3.193:6379     
+    
+    
+    
+    
+aaron911:
+  pay:
+    alipay: 
+      appId: 2016101000653063
+      privateKey: 
+      publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkSr0B1WnQ9yuPp1x3cSCzc7CB0NXump5HEjkXn8lUPWvXnxhfvHm+UqD4Xd4xfBoybJDSP241suPTztudWQmB64XXX8O+Ned5DdyB+ym38b7zpvmeamJf7uQ+kKeEHuUheKuLDEAxMFdpCHW4yYLLkxLDJFGs6KsM+BNhTRhjgGcD45xB2Sh/sdVQ2V3HA7tOq7jjAXkUyEOk/Pm5Q2eB2yHaUXLSMpSVMHc1OsygQjpgbFRm8SayN/R0cIRGjmUl3062aNT/EdC0lpjgFsCwAh6fsO1MzyXlcXw09ayiZViVR+DC+BplaJlJDXB1s7H2BBNZbVqy0+1qBcLfYFv6QIDAQAB
+      appCertPath: 应用公钥证书
+      aliPayCertPath: 支付宝公钥证书
+      aliPayRootCertPath: 支付宝根证书
+      serverUrl: https://openapi.alipaydev.com/gateway.do
+      domain: http://2587m40v86.qicp.vip:32953/
+    
+    wxpay:
+      appId: 应用编号
+      appSecret: appSecret 是 appId 对应的接口密码，微信公众号授权获取用户 openId 时使用
+      mchId: 微信支付商户号
+      partnerKey: API 密钥
+      certPath: apiclient_cert.p1 证书路径，在微信商户后台下载
+      domain: 外网访问项目的域名，支付通知中会使用
+    
+  buron: 
+    type: redis  
+  
+  
+  
+  
+  
+  
+  
+      
+# redisson lock
+redisson:
+  address: redis://192.168.3.193:6379
+  password:
+#这里如果不加redis://前缀会报URI构建错误，Caused by: java.net.URISyntaxException: Illegal character in scheme name at index 0
+
+
+#其次，在redis进行连接的时候如果不对密码进行空判断，会出现AUTH校验失败的情况。Caused by: org.redisson.client.RedisException: ERR Client sent AUTH, but no password is set. channel  
+#redisson.master-name=mymaster
+#redisson.password=xxxx
+#redisson.sentinel-addresses=10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381      
+     
