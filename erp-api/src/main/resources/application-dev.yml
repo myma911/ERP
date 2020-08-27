@@ -55,6 +55,29 @@ spring:
       mail.smtp.starttls.required: true
       mail.smtp.ssl.enable: true
       mail.display.sendmail: spring-boot-demo
+      
+  #模板热部署、禁用 thymeleaf 缓存
+  thymeleaf:
+    cache: false
+    
+    
+# SpringBoot开启Gzip压缩    
+server:
+  compression:
+    #enabled: true
+    mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
+    
+    
+rsa:
+  encrypt:
+    open: true # 是否开启加密 true  or  false
+    showLog: true # 是否打印加解密log true  or  false
+    publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD9bSQl3l5LvPjBYSg25jQWNi4RW40DqsWL3rOGL3u5A3rx5mKk//uvr1ZFSb8kPNIKHU7yXhpJWuy3YdG3Yy9ROoF5KODitqliMu/5L1H/64Xf5pniXFdvX7xZknAWr8p2jRPg+vMzKLfpP9ZZHk6/1QpoaIopVC5sWc7Hq0XAAQIDAQAB
+    privateKey: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAP1tJCXeXku8+MFhKDbmNBY2LhFbjQOqxYves4Yve7kDevHmYqT/+6+vVkVJvyQ80godTvJeGkla7Ldh0bdjL1E6gXko4OK2qWIy7/kvUf/rhd/mmeJcV29fvFmScBavynaNE+D68zMot+k/1lkeTr/VCmhoiilULmxZzserRcABAgMBAAECgYBLR/yQ8zl3ri8G4uGbTU7zuix9I4EEMdp07jbOCZTrJMmEyjdLZG9ThPZPptSM4zRRpNsqzCFq4QOohfpSS7hmBXMDJHyfAQDjlFAXnKZRL3kQGGFtMSkhGMAmPfPL7YZHVJUL4zoU/yRymY4VOVLk/jj8XkiTpM/nr7DOHSUF8QJBAP/PdhVtzIkMzUjGhJ2DLgPl9Dy7tlyIHl9YEIN1isKCvGUD+3dobFYtUgtbalVolLMnrSeGXF+E7VyVJmXdlJMCQQD9nTpCUYj7ELaCfkx6sQZSlO7aZZgOdFfDGOyPxGW497Zv2t7UhNR7aw+T/cNLBx4gLS2CRyeeTNzHW21vcembAkAW/Ixu1oP3mLflnzkRclUzMnmk73UukWixRpeNSIWkftzw8s+o5jA9+iqSLK+8Zv5druYHVDJ+vtIZbKmbo7KTAkEA4UOdMri/RdmjcqcCAVxptEJLIbtpYzVdmpHx1QTqIXANIK80i2lsXi9LB/U3WNX6oTPfnz7aZtX4qC6CNqHkjwJBAMHrPdeLjUYIhEMCy6rZgsdl5ECfxxt07Dd297GluyhxCX0ZGeELvf3tthr1YMSY3fcDZim/+LiqIy5djH+YO8o=
+
+
+    
+        
 
 jwt:
    config:
@@ -92,7 +115,8 @@ aaron911:
       domain: 外网访问项目的域名，支付通知中会使用
     
   buron: 
-    type: redis  
+    type: redis
+    threshold: 100
   
   
   

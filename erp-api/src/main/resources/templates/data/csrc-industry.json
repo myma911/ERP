@@ -1,0 +1,114 @@
+[
+	{
+		"code": "A",
+		"industry": "客户管理",
+		"alias": "客户管理",
+		"sh_stock": 15,
+		"sz_stock": 26,
+		"stock": 41
+	},
+	{
+		"code": "B",
+		"industry": "工作流程",
+		"alias": "工作流程",
+		"sh_stock": 51,
+		"sz_stock": 26,
+		"stock": 77
+	},
+	{
+		"code": "C",
+		"industry": "产品管理",
+		"alias": "产品管理",
+		"sh_stock": 828,
+		"sz_stock": 1471,
+		"stock": 999
+	},
+	{
+		"code": "D",
+		"industry": "方案设计",
+		"alias": "方案设计",
+		"sh_stock": 66,
+		"sz_stock": 47,
+		"stock": 113
+	},
+	{
+		"code": "E",
+		"industry": "信息共享",
+		"alias": "信息共享",
+		"sh_stock": 50,
+		"sz_stock": 49,
+		"stock": 99
+	},
+	{
+		"code": "F",
+		"industry": "公司管理",
+		"alias": "公司管理",
+		"sh_stock": 103,
+		"sz_stock": 68,
+		"stock": 171
+	},
+	{
+		"code": "G",
+		"industry": "财务管理",
+		"alias": "财务管理",
+		"sh_stock": 73,
+		"sz_stock": 34,
+		"stock": 107
+	},
+	{
+		"code": "H",
+		"industry": "车辆管理",
+		"alias": "车辆管理",
+		"sh_stock": 4,
+		"sz_stock": 7,
+		"stock": 11
+	},
+	{
+		"code": "I",
+		"industry": "行业知识",
+		"alias": "行业知识",
+		"sh_stock": 60,
+		"sz_stock": 204,
+		"stock": 264
+	},
+	{
+		"code": "J",
+		"industry": "考试管理",
+		"alias": "考试管理",
+		"sh_stock": 64,
+		"sz_stock": 27,
+		"stock": 91
+	},
+	{
+		"code": "K",
+		"industry": "运营分析",
+		"alias": "运营分析",
+		"sh_stock": 74,
+		"sz_stock": 63,
+		"stock": 137
+	},
+	{
+		"code": "L",
+		"industry": "云产品库",
+		"alias": "云产品库",
+		"sh_stock": 17,
+		"sz_stock": 36,
+		"stock": 53
+	},
+	{
+		"code": "M",
+		"industry": "流程审核",
+		"alias": "流程审核",
+		"sh_stock": 20,
+		"sz_stock": 29,
+		"stock": 49
+	},
+	{
+		"code": "N",
+		"industry": "系统管理",
+		"alias": "系统管理",
+		"sh_stock": 19,
+		"sz_stock": 31,
+		"stock": 50
+	}
+]

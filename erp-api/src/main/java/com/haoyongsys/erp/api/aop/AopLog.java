@@ -65,7 +65,7 @@ public class AopLog {
 	@Around("log()")
 	public Object aroundLog(ProceedingJoinPoint point) throws Throwable {
 		Object result = point.proceed();
-		log.info("【返回值】：{}", JSONUtil.toJsonStr(result));
+		//log.info("【返回值】：{}", JSONUtil.toJsonStr(result));
 		return result;
 	}
 

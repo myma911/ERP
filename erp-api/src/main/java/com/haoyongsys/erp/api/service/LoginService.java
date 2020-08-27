@@ -2,6 +2,7 @@ package com.haoyongsys.erp.api.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.haoyongsys.erp.api.constant.ProjectGlobalConfig;
+import com.haoyongsys.erp.common.dao.mapper.user.ARightUserMapper;
 import com.haoyongsys.erp.common.pojo.R;
 import com.haoyongsys.erp.common.pojo.StateCodeEnum;
 import com.haoyongsys.erp.common.pojo.entity.token.TokenEntity;
@@ -27,6 +30,7 @@ public class LoginService {
 
 	@Autowired
 	private IARightUserService rightUserService;
+	
 
 	@Autowired
 	private TokenService tokenService;
@@ -66,6 +70,7 @@ public class LoginService {
 	}
 
 	public boolean blackToken(String userId) {
+		
 		return tokenService.expireToken(userId);
 	}
 

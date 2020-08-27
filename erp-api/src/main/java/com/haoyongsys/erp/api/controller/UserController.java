@@ -12,6 +12,7 @@ import com.haoyongsys.erp.common.pojo.R;
 import com.haoyongsys.erp.common.pojo.entity.user.ARightUser;
 import com.haoyongsys.erp.common.service.user.IARightUserService;
 
+import cn.shuibo.annotation.Encrypt;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -22,11 +23,14 @@ public class UserController {
 
 	@Autowired
 	private IARightUserService userService;
+	
 
-	@GetMapping(value = "/getAllUser")
+	@Encrypt
+	@GetMapping(value = "/all")
 	@ApiOperation("获取所有用户")
 	public R<?> getAllUser() {
 		List<ARightUser> list = userService.list();
+		list = list.subList(0, 20);
 		return R.OK(list);
 	}
 	
@@ -34,6 +38,7 @@ public class UserController {
 	@GetMapping(value = "/get/{userid}")
 	@ApiOperation("获取某用户信息")
 	public R<?> getUserById(@PathVariable String userid) {
+		
 		ARightUser user = userService.getById(userid);
 		return R.OK(user);
 	}
