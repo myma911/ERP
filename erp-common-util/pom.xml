@@ -45,9 +45,9 @@
 
 		<!-- Redisson 实现分布式锁 -->
 		<dependency>
-			<groupId>org.redisson</groupId>
-			<artifactId>redisson</artifactId>
-			<version>3.5.0</version>
+			<groupId>cn.aaron911</groupId>
+			<artifactId>aaron911-lock-spring-boot-starter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 
@@ -73,6 +73,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+
+
+		<!-- 接口幂等性校验 -->
+		<dependency>
+			<groupId>cn.aaron911</groupId>
+			<artifactId>aaron911-idempotent-spring-boot-starter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 
 
 	</dependencies>

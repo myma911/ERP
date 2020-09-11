@@ -1,79 +1,88 @@
 package com.haoyongsys.erp.common.pojo;
 
-import java.util.HashMap;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 返回数据
+ * 移动端使用的返回数据
+ * 
+ * code 状态码 
+ * msg  返回消息 
+ * data 返回数据 
+ * extra 附加信息
+ * 
  *
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class R<T> extends HashMap<String, Object> {
-	private static final long serialVersionUID = 1L;
-
+public class R {
+	
+	private Integer code = 0;
+	
+	private String msg;
+	
+	private Object data;
+	
+	private Object extra;
+	
+	
 	public R() {
-		put("code", 0);
-		put("state", StateCodeEnum.OK.getCode());
-		put("msg", StateCodeEnum.OK.getMsg());
-	}
-
-	public R(Integer state, String message) {
-		this(0, state, message);
-	}
-
-	public R(StateCodeEnum stateCodeEnum) {
-		this(0, stateCodeEnum.getCode(), stateCodeEnum.getMsg());
-	}
-
-	public R(Integer code, Integer state, String message) {
-		this(code, state, message, null);
-	}
-
-	public R(Integer state, String message, T data) {
-		this(0, state, message, data);
-	}
-
-	public R(Integer code, Integer state, String message, T data) {
-		put("code", code);
-		put("state", state);
-		put("msg", message);
-		put("data", data);
-	}
-
-	public static R<Object> OK() {
-		return new R<>();
-	}
-
-	public static <T> R<Object> OK(T t) {
-		return R.OK().put("data", t);
-	}
-
-	public static <T> R<Object> OK(String msg, T t) {
-		return R.OK().put("msg", msg).put("data", t);
-	}
-
-	public static R<Object> Error() {
-		return new R<>().put("state", StateCodeEnum.ERROR.getCode()).put("msg", "失败");
+	
 	}
 	
-	public static <T> R<Object> Error(String msg) {
-		return R.Error().put("msg", msg);
+	public R(Integer code, String msg, Object data, Object extra) {
+		this.code = code;
+		this.msg = msg;
+		this.data = data;
+		this.extra = extra;
 	}
 	
-	public static <T> R<Object> Error(String msg, T t) {
-		return R.Error().put("msg", msg).put("data", t);
+	
+	public static R OK() {
+		return new R();
+	}
+	
+	
+	public static R OK(Object t) {
+		R ok = R.OK();
+		ok.setData(t);
+		return ok;
 	}
 
-	public static <T> R<Object> Error(T t) {
-		return R.Error().put("data", t);
+	public static R OK(String msg, Object t) {
+		R ok = R.OK();
+		ok.setMsg(msg);
+		ok.setData(t);
+		return ok;
 	}
 
-	@Override
-	public R<T> put(String key, Object value) {
-		super.put(key, value);
-		return this;
+
+	
+	/**
+	 * Error 的 code 也是 0；
+	 * 通过state状态码来标识错误
+	 * @Title: Error
+	 * @author Aaron
+	 * @Date 2020年9月1日 上午10:55:24
+	 * @return R2<Object>
+	 */
+	public static R Error() {
+		R r = new R();
+		r.setCode(StateCodeEnum.ERROR.getCode());
+		r.setMsg(StateCodeEnum.ERROR.getMsg());
+		return r;
+	}
+	
+	public static R Error(String msg) {
+		R error = R.Error();
+		error.setMsg(msg);
+		return error;
+	}
+	
+	public static R Error(String msg, Object t) {
+		R error = R.Error();
+		error.setMsg(msg);
+		error.setData(t);
+		return error;
 	}
 }

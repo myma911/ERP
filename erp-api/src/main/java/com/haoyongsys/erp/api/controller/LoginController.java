@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.haoyongsys.erp.api.service.LoginService;
-import com.haoyongsys.erp.common.pojo.R;
+import com.haoyongsys.erp.common.pojo.R2;
 import com.haoyongsys.erp.common.pojo.StateCodeEnum;
 import com.haoyongsys.erp.common.pojo.entity.user.ARightUser;
 import com.haoyongsys.erp.common.pojo.form.LoginForm;
@@ -44,7 +44,7 @@ public class LoginController {
      **/
     @PostMapping(value="/crmLoginByUserNameAndPassWord") 
     @ApiOperation("登录")
-    public R<?> login(
+    public R2 login(
     		@RequestBody LoginForm form  		
     ){
     	ValidatorUtils.validateEntity(form);
@@ -55,12 +55,12 @@ public class LoginController {
     @Login
     @GetMapping("logout")
     @ApiOperation("退出")
-    public R<Object> logout(@LoginUser ARightUser user){
+    public R2 logout(@LoginUser ARightUser user){
     	boolean blackToken = loginService.blackToken(user.getUserId());
     	if (blackToken) {
-    		return R.OK();
+    		return R2.OK();
     	}
-        return new R<>(StateCodeEnum.ERROR.getCode(), "失败");
+        return new R2(StateCodeEnum.ERROR);
     }
 
 }

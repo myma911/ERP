@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.plumelog.core.LogMessageThreadLocal;
+import com.plumelog.core.TraceId;
+import com.plumelog.core.TraceMessage;
+import com.plumelog.core.constant.LogMessageConstant;
+import com.plumelog.core.util.GfJsonUtil;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.Objects;
@@ -64,9 +70,31 @@ public class AopLog {
 	 */
 	@Around("log()")
 	public Object aroundLog(ProceedingJoinPoint point) throws Throwable {
-		Object result = point.proceed();
-		//log.info("【返回值】：{}", JSONUtil.toJsonStr(result));
-		return result;
+//		Object result = point.proceed();
+//		log.info("【返回值】：{}", JSONUtil.toJsonStr(result));
+//		return result;
+		
+		
+		
+		TraceMessage traceMessage = LogMessageThreadLocal.logMessageThreadLocal.get();
+        String traceId = TraceId.logTraceID.get();
+        if (traceMessage == null || traceId == null) {
+            traceMessage = new TraceMessage();
+            traceMessage.getPositionNum().set(0);
+        }
+        traceMessage.setTraceId(traceId);
+        traceMessage.setMessageType(point.getSignature().toString());
+        traceMessage.setPosition(LogMessageConstant.TRACE_START);
+        traceMessage.getPositionNum().incrementAndGet();
+        LogMessageThreadLocal.logMessageThreadLocal.set(traceMessage);
+        log.info(LogMessageConstant.TRACE_PRE + GfJsonUtil.toJSONString(traceMessage));
+        Object proceed = ((ProceedingJoinPoint) point).proceed();
+        log.info("【返回值】：{}", JSONUtil.toJsonStr(proceed));
+        traceMessage.setMessageType(point.getSignature().toString());
+        traceMessage.setPosition(LogMessageConstant.TRACE_END);
+        traceMessage.getPositionNum().incrementAndGet();
+        log.info(LogMessageConstant.TRACE_PRE + GfJsonUtil.toJSONString(traceMessage));
+        return proceed;
 	}
 
 	/**

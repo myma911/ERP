@@ -95,6 +95,22 @@
 			<version>20090211</version>
 			<optional>true</optional>
 		</dependency>
+		
+		
+		
+		<!-- 日志收集 -->
+		<dependency>
+			<groupId>com.plumelog</groupId>
+			<artifactId>plumelog-logback</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<!-- 链路追踪 -->
+		<dependency>
+			<groupId>com.plumelog</groupId>
+			<artifactId>plumelog-trace</artifactId>
+			<version>3.1.2</version>
+		</dependency>
 
 
 	</dependencies>

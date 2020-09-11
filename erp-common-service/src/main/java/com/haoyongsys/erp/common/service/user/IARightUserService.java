@@ -13,4 +13,6 @@ import com.haoyongsys.erp.common.pojo.entity.user.ARightUser;
  */
 public interface IARightUserService extends IService<ARightUser> {
 
+	ARightUser test();
+
 }

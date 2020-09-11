@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.haoyongsys.erp.common.pojo.PageResult;
-import com.haoyongsys.erp.common.pojo.R;
+import com.haoyongsys.erp.common.pojo.R2;
 import com.haoyongsys.erp.common.pojo.StateCodeEnum;
 import com.haoyongsys.erp.common.pojo.entity.sharedinfo.CrmSharedinfoText;
 import com.haoyongsys.erp.common.pojo.mongodb.SharedinfoText;
@@ -37,9 +37,9 @@ public class SharedinfoTextController {
 
 	@GetMapping(value = "/getAll")
 	@ApiOperation("获取所有")
-	public R getAll() {
+	public R2 getAll() {
 		List<SharedinfoText> findAll = sharedinfoTextService.findAll();
-		return R.OK(findAll);
+		return R2.OK(findAll);
 	}
 	
 	
@@ -49,7 +49,7 @@ public class SharedinfoTextController {
      */
 	@ApiOperation("添加")
 	@PostMapping(value = "/add")
-    public R add(
+    public R2 add(
 		@RequestBody SharedinfoText sharedinfoText
 		,String businessId
 	) {
@@ -74,7 +74,7 @@ public class SharedinfoTextController {
 //		});
 		
 		sharedinfoTextService.add(sharedinfoText);
-        return R.OK();
+        return R2.OK();
     }
 	
 	
@@ -88,9 +88,9 @@ public class SharedinfoTextController {
      */
 	@ApiOperation("查询")
 	@GetMapping(value = "/search/{keywords}/{page}/{size}")
-    public R search(@PathVariable String keywords, @PathVariable int page, @PathVariable int size) {
+    public R2 search(@PathVariable String keywords, @PathVariable int page, @PathVariable int size) {
         Page<SharedinfoText> pageResult = sharedinfoTextService.findByTitleOrContentLike(keywords, page, size);
-        return new R(StateCodeEnum.OK.getCode(), "查询成功", new PageResult<SharedinfoText>(pageResult.getTotalElements(), pageResult.getContent()));
+        return R2.OK(new PageResult<SharedinfoText>(pageResult.getTotalElements(), pageResult.getContent()));
     }
 	
 	

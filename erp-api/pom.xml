@@ -13,13 +13,14 @@
 
 	<dependencies>
 
+		<!-- 接口加密解密 -->
 		<dependency>
-			<groupId>cn.shuibo</groupId>
-			<artifactId>rsa-encrypt-body-spring-boot</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<groupId>cn.aaron911</groupId>
+			<artifactId>aaron911-encrypt-springb-boot-starter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -73,6 +74,9 @@
 			<artifactId>aaron911-pay-all</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+
+	
 
 	</dependencies>
 
